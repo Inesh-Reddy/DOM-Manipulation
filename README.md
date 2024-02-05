@@ -18,7 +18,7 @@ DOM Manipulation
         element.setAttribute
         element.children
         
-    ![alt text](image.png)
+![alt text](image.png)
 
 We tried to create a Todo app using DOM manipulation
 
