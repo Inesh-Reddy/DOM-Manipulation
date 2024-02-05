@@ -64,7 +64,7 @@ We tried to create a Todo app using DOM manipulation
     also, no central state.
 
 What is State?
-    generally refers to the current condition or status of a web page or a specific element on the page.
+    Generally refers to the current condition or status of a web page or a specific element on the page.
 
     In web development, managing state is crucial for creating dynamic and interactive user interfaces. Stateful applications often involve updating the DOM in response to user actions or changes in data. JavaScript is commonly used to manipulate the DOM and manage the state of a web page.
 
