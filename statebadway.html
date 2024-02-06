@@ -1,0 +1,56 @@
+<!-- implementing state ...ofcourse the dumb way -->
+<html>
+    <body>
+        <input id="title" type="text" placeholder="title"><br></br>
+        <input id="description" type="text" placeholder="description"><br></br>
+
+
+        <div id="container"></div>
+        <script>
+            function createChild(title, description, id){
+                const child = document.createElement("div");
+                const titlechild = document.createElement("div");
+                titlechild.innerHTML=title;
+                const descchild = document.createElement("div");
+                descchild.innerHTML=description;
+                const buttonchild = document.createElement("button");
+                buttonchild.innerHTML=`Mark as Done`;
+                child.appendChild(titlechild);
+                child.appendChild(descchild);
+                child.appendChild(buttonchild);
+                child.setAttribute(`id`, id);
+                return child;
+            }
+            function updateDivAccordingToState(state){
+                const parent = document.getElementById("container");
+                parent.innerHTML="";
+                for(let i=0; i<state.length; i++){
+                    parent.appendChild(createChild(state[i].title, state[i].description,state[i].id));
+                }
+            }
+    
+            window.setInterval(async function() {
+                const res = await fetch("https://sum-server.100xdevs.com/todos")
+                const json = await res.json();
+                updateDivAccordingToState(json.todos)
+            }, 5000)
+            // https://gist.github.com/hkirat/186fb6652fb6a38908ebe3030d4c4542
+            // updateDivAccordingToState([{
+            //     title: "go to gym",
+            //     description: "from 5 to 7 pm",
+            //     id: 1,
+            // },{
+            //     title: "go to gym 2",
+            //     description: "from 8 to 9 pm",
+            //     id: 2,
+            // },{
+            //     title: "go to gym 3",
+            //     description: "from 8 to 9 pm",
+            //     id: 2,
+            // }]);
+    
+            
+        </script>
+    </body>
+
+</html>
